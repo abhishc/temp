@@ -1,5 +1,5 @@
 const express = require('express');
-const { securityHeaders, corsMiddleware, jsonParser, requestLogger, errorHandler } = require('./middleware');
+const { securityHeaders, corsMiddleware, jsonParser, requestLogger, notFoundHandler, errorHandler } = require('./middleware');
 const routes = require('./routes');
 
 const app = express();
@@ -20,7 +20,10 @@ app.use(requestLogger);
 // 5. Routes
 app.use('/', routes);
 
-// 6. Error handler (must be last)
+// 6. 404 handler (catches unmatched routes, must be after all routes)
+app.use(notFoundHandler);
+
+// 7. Error handler (must be last)
 app.use(errorHandler);
 
 module.exports = app;

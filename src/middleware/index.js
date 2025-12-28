@@ -44,11 +44,34 @@ const requestLogger = (req, res, next) => {
   next();
 };
 
+// 404 Not Found handler middleware
+const notFoundHandler = (req, res, next) => {
+  const err = new Error('Route not found');
+  err.status = 404;
+  err.code = 'NOT_FOUND';
+  next(err);
+};
+
 // Error handler middleware
 const errorHandler = (err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || 'Internal Server Error';
-  res.status(status).json({ error: message });
+  // If headers already sent, delegate to default Express error handler
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || (status === 404 ? 'Not Found' : 'Internal Server Error');
+  
+  const body = {
+    error: {
+      message,
+      status,
+      ...(err.code && { code: err.code }),
+      ...(process.env.NODE_ENV !== 'production' && err.stack && { stack: err.stack })
+    }
+  };
+
+  res.status(status).json(body);
 };
 
 module.exports = {
@@ -57,5 +80,6 @@ module.exports = {
   corsOptions,
   jsonParser,
   requestLogger,
+  notFoundHandler,
   errorHandler
 };
