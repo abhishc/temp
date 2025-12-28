@@ -12,13 +12,38 @@ Simple Express.js API with Hello World endpoint and OpenAPI spec
 npm install
 ```
 
-## Usage
+## Running the server
 
-Start the server:
+### Development
+
+Start the server in development mode with auto-reload:
+
+```bash
+npm run dev
+```
+
+This command:
+- Sets `NODE_ENV=development`
+- Uses Node.js built-in `--watch` for automatic reloading on file changes (requires Node.js 18+)
+- Loads environment variables from `.env` file if present (via `dotenv`)
+
+### Production
+
+Start the server in production mode:
 
 ```bash
 npm start
 ```
+
+Or explicitly set production environment:
+
+```bash
+npm run start:prod
+```
+
+**Prerequisites:** Node.js 18+ recommended (for `--watch` support in development mode)
+
+## Usage
 
 Then visit `http://localhost:3000/` or use the hello world endpoint:
 
