@@ -1,0 +1,4 @@
+.cursor_conversation_history*.txt
+.DS_Store
+node_modules/
+.env
