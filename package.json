@@ -1,7 +1,7 @@
 {
   "name": "express-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple Express.js API with Hello World endpoint and OpenAPI spec",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,10 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abhishc/temp.git"
+    "url": "git+ssh://git@github.com/abhishc/temp.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express",
+    "node",
+    "api",
+    "starter",
+    "openapi"
+  ],
+  "author": "abhishc",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/abhishc/temp/issues"

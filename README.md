@@ -1,6 +1,34 @@
-# Express Demo
+# temp
 
-A simple Express.js application with hello world API endpoints.
+Simple Express.js API with Hello World endpoint and OpenAPI spec
+
+## Prerequisites
+
+- Node.js LTS
+
+## Installation
+
+```bash
+npm install
+```
+
+## Usage
+
+Start the server:
+
+```bash
+npm start
+```
+
+Then visit `http://localhost:3000/` or use the hello world endpoint:
+
+```bash
+curl http://localhost:3000/
+```
+
+## API Documentation
+
+See [openapi.yaml](./openapi.yaml) for the complete API specification.
 
 ## API Contract
 
@@ -48,3 +76,7 @@ curl http://localhost:3000/api/hello
 - **Port:** 3000 by default, configurable via `PORT` environment variable
 - **Response Format:** JSON only
 - **Authentication:** Not required
+
+## License
+
+ISC - see [LICENSE](./LICENSE) file for details.
