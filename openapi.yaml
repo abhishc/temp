@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: Express Demo API
+  description: A simple Express.js application with hello world API endpoints
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Returns the service health status
+      operationId: getHealth
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  service:
+                    type: string
+                    example: express-demo
+                required:
+                  - status
+                  - service
+              example:
+                status: ok
+                service: express-demo
+  /api/hello:
+    get:
+      summary: Hello world message
+      description: Returns a hello world message
+      operationId: getHello
+      tags:
+        - Hello
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hello, World!
+                required:
+                  - message
+              example:
+                message: Hello, World!
